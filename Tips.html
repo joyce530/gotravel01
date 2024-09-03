@@ -1,0 +1,549 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>去旅行-旅遊錦囊</title>
+
+<style>
+     body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+        padding: 20px;
+    }
+    header {
+       display: flex;
+       justify-content: left; 
+       align-items: center; 
+       background-color: rgb(31, 91, 188);
+       color: rgb(233, 225, 225);
+       padding: 5px 10px; 
+       height: 100px;
+    }
+    #branding {
+      display: flex;
+      align-items: right; 
+      line-height: 20px;
+    }
+    #branding img {
+      margin-right: 20px; 
+    } 
+    nav {
+      margin-left: 0; 
+    }
+    nav ul {
+      display: flex; 
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    nav li {
+      margin: 0 15px; /* 導航項目之間的間距 */      
+      /* height: auto;    */
+    }
+    .header-item{
+        font-size: 23px;
+        margin: 5px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    header a {
+        color: #cc1c1c;
+        text-decoration: none;
+        text-transform: uppercase;
+        margin-right: 20px;
+        font-size: 25px;
+        padding: 5px 10px;
+    }
+    header ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        overflow: hidden;
+    }
+    header nav ul li a {
+        padding: 5px 10px; 
+        line-height: 30px; 
+        color: #a6df3c;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+    header li {
+        float: center;
+        display: inline;
+        padding: 0 20px 0 20px;
+    }
+    header #branding {
+        float: left;
+        font-size: 20px;
+        margin-right:40px;
+    }
+    header #branding h1 {
+        margin: 0;
+    }
+    header nav {
+        float: left;
+        margin-top: 15px;
+        margin: 10px;
+    }
+    header .highlight, header .current a {
+        color: #c1e00d;
+        font-weight: bold;
+    }
+    header a:hover {
+        color: #ffffff;
+    }
+    .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .hero video {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 1;
+    }
+    .hero-content {
+        text-align: center;
+        color: #edf1ef;
+        z-index: 1;
+    }
+    .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .hero-content p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+    .cta-button {
+        display: inline-block;
+        background-color: #00c3ff;
+        color: #fff;
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+        background-color: #ff6347;
+    }
+    .section {
+        padding: 80px 0;
+    }
+    .section h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        color: #333;
+    }
+    .city-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+    .city-card {
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    .city-card:hover {
+        transform: translateY(-5px);
+    }
+    .city-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .city-card-content {
+        padding: 20px;
+    }
+    .city-card h3 {
+        margin-top: 0;
+        font-size: 1.5rem;
+        color: #333;
+    }
+    .city-card p {
+        color: #666;
+        margin-bottom: 15px;
+    }
+    .city-card a {
+        display: inline-block;
+        background-color: #ff4500;
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+    .city-card a:hover {
+        background-color: #ff6347;
+    }
+    footer {
+        padding: 20px;
+        margin-top: 20px;
+        color: #ffffff;
+        background-color: rgb(100, 141, 206);
+        text-align: center;
+    }
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .footer-section {
+        flex: 1;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+    .footer-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+    .footer-section ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .footer-section ul li {
+        margin-bottom: 10px;
+    }
+    .footer-section ul li a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .footer-section ul li a:hover {
+        color: #fff;
+    }
+    .social-icons {
+        display: flex;
+        gap: 15px;
+    }
+    .social-icons a {
+        color: #fff;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+        color: #ff4500;
+    }
+
+  .faq-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .faq-question {
+    padding: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-question::after {
+    content: '+';
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-question.active::after {
+    transform: rotate(45deg);
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    padding: 0 20px;
+  }
+  
+  .faq-answer.show {
+    max-height: 1000px;
+    padding: 20px;
+  }
+  
+  .faq-answer p {
+    margin: 0;
+    line-height: 1.6;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div id="branding">
+        <img src="./Logo/Go Travel-R01.png" alt="Logo" style="height:200px;">         
+    </div>
+    <nav>
+        <ul>
+          <li><a href="./Home.html"class="highlight">主頁</a></li>
+          <li><a href="./About.html"class="highlight">關於我們</a></li>
+          <li><a href="./Contact.html" class="highlight">聯絡我們</a></li>
+          <li><a href="./Main1/Japan pg1.html" class="highlight">預訂旅程</a></li>
+          <li><a href="./Privacy.html" class="highlight">私隱政策</a></li>
+          <li><a href="./Term.html" class="highlight">條款及細則</a></li>
+          <li><a href="./Main1/login.html" class="highlight">登入/註册</a></li>
+        </ul>
+    </nav>
+</div>
+</header>
+   <main>
+      <section class="hero">
+          <video autoplay loop muted>
+              <source src="./Video/Japan travel-R02.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+         <div class="hero-content">
+              <h1>想去日本旅行卻有一堆問題</h1><br>
+              <h3>不要擔心，我們會列出常見問題答案，為你解決你疑問！</h3><br>
+              <a href="./Main/Japan pg1.html" class="cta-button">查詢旅行團 </a> 
+          </div> 
+      </section>
+     <section class="section">
+        <div class="container">
+            <h2>旅遊錦囊</h2>
+            <div class="city-grid">
+                <div class="city-card">
+                    <img src="./Image/JVisa.jpeg" alt="Tokyo skyline at night with Mount Fuji in the background" width="400" height="300">
+                    <div class="city-card-content">
+                        <h3>日本簽證須知</h3>
+                        <a href="./Main1/visa info 1.html">查 詢</a>
+                    </div>
+                </div>
+                <div class="city-card">
+                    <img src="./Image/Jcharge.jpeg" alt="Vibrant street scene in Osaka with neon signs and street food stalls" width="400" height="300">
+                    <div class="city-card-content">
+                        <h3>日本簽證收費</h3>
+                        <a href="./Main1/visa fee table.html">查 詢</a>
+                    </div>
+                </div>
+                <div class="city-card">
+                    <img src="./Image/Jissue.jpeg" alt="Scenic view of snow-capped mountains and a hot spring in Hokkaido" width="300" height="200">
+                    <div class="city-card-content">
+                        <h3>日本旅遊事項</h3>
+                        <a href="./Main1/travel item.html">查 詢</a>
+                    </div>
+                </div>
+                <div class="city-card">
+                  <img src="./Image/JJ.png" alt="Scenic view of snow-capped mountains and a hot spring in Hokkaido" width="300" height="200">
+                  <div class="city-card-content">
+                      <h3>日本旅遊局</h3>
+                      <a href="https://www.jnto.go.jp/">查 詢</a>
+                  </div>
+              </div>
+            </div>
+    </section>
+    <div class="faq-item">
+    <div class="faq-question">去日本旅遊的最佳季節是什麼？</div>
+    <div class="faq-answer">
+      <p>日本一年四季都很美麗，但每個季節都有獨特的體驗：</p>
+      <ul>
+        <li><strong>春季 (三月至五月):</strong> 以櫻花而聞名。溫和的天氣和令人驚歎的花卉展示。</li>
+        <li><strong>夏季 (六月至八月):</strong> 非常適合遠足和節日。可能炎熱潮濕，偶爾下雨。</li>
+        <li><strong>秋季 (九月至十一月):</strong> 舒適的溫度和壯觀的秋葉。</li>
+        <li><strong>冬季 (十二月至二月y):</strong>  非常適合冬季運動、泡溫泉和欣賞白雪皚皚的富士山。</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">如何使用日本鐵路通票？</div>
+    <div class="faq-answer">
+      <p>日本鐵路通票是遊客遊覽日本的一種經濟高效的方式。使用方法如下：</p>
+      <ol>
+        <li>在抵達日本之前購買通行證。</li>
+        <li>在日本的 JR 辦事處將您的憑證兌換為實際通票。</li>
+        <li>該通票適用於大多數 JR 列車，包括新幹線（子彈列車）。</li>
+        <li>只需在檢票口出示您的通行證即可登上火車。</li>
+        <li>可在 JR 售票處免費預訂座位。</li>
+      </ol>
+      <p>注意：該通票不適用於某些高級列車和私人鐵路線。</p>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">日本有哪些必嚐的美食？</div>
+    <div class="faq-answer">
+      <p>日本料理種類繁多，味道鮮美。以下是一些你不應該錯過的食物：</p>
+      <ul>
+        <li><strong>Sushi and Sashimi:</strong> Fresh raw fish and seafood.</li>
+        <li><strong>Ramen:</strong> Hearty noodle soup with various toppings.</li>
+        <li><strong>Tempura:</strong> Lightly battered and fried seafood or vegetables.</li>
+        <li><strong>Okonomiyaki:</strong> Savory pancake with various ingredients.</li>
+        <li><strong>Wagyu Beef:</strong> High-quality, marbled beef.</li>
+        <li><strong>Matcha:</strong> Green tea in various forms, including desserts.</li>
+        <li><strong>Takoyaki:</strong> Octopus-filled batter balls.</li>
+        <li><strong>Mochi:</strong> Chewy rice cakes, often filled with sweet bean paste.</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">如何掌握日本溫泉禮儀？</div>
+    <div class="faq-answer">
+      <p>Onsen（溫泉）是典型的日本體驗。以下是如何恭敬地享用它們： </p>
+      <ol>
+        <li>脫掉更衣室裡的所有衣服。裸體是必要的，也是正常的。</li>
+        <li>帶一條小毛巾以保持謙虛，但不要讓它接觸水。</li>
+        <li>進入浴缸前徹底淋浴。使用提供的便利設施。</li>
+        <li>緩慢而安靜地進入浴缸。不要濺水或游泳。</li>
+        <li>放低聲音並尊重他人的放鬆。</li>
+        <li>洗澡前或洗澡時不要飲酒。</li>
+        <li>遮蓋任何大的紋身，因為某些溫泉可能不允許這樣做。</li>
+      </ol>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">關於在日本使用現金和銀行卡我應該了解哪些資訊？</div>
+    <div class="faq-answer">
+      <p>日本在很大程度上仍然是一個以現金為基礎的社會，但信用卡的使用正在增加。以下是您需要了解的內容：</p>
+      <ul>
+        <li>隨身攜帶一些現金。許多小商店和餐廳只收現金。</li> 
+        <li>7-11 便利商店和郵局的 ATM 可以可靠地接受外國卡。</li>
+        <li>大多數飯店、百貨公司和較大的餐廳都接受主要信用卡。</li>
+        <li>告知您的銀行您的旅行計劃，以避免卡片被凍結。</li>
+        <li>考慮購買 IC 卡（如 Suica 或 Pasmo），以便在公共交通和某些商店支付方便。</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">在日本如何使用行動數據保持連線？</div>
+    <div class="faq-answer">
+      <p>在日本保持聯繫相對容易。您有多種選擇：</p>
+      <ol>
+        <li><strong>Pocket Wi-Fi:</strong> 租用可創建 Wi-Fi 熱點的便攜式設備。可以在機場領取或運送到您的飯店。</li>
+        <li><strong>SIM Card:</strong> 購買包含資料的預付費 SIM 卡。在機場和電子商店有售。</li>
+        <li><strong>eSIM:</strong>如果您的手機支持，您可以在旅行前下載 eSIM。</li>
+        <li><strong>Free Wi-Fi:</strong> 許多公共場所提供免費 Wi-Fi，包括火車站和便利商店，但可靠性可能較差。</li>
+      </ol>
+      <p>請記得在旅行前檢查您的手機是否已解鎖且與日本網路相容。</p>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">我應該注意哪些常見的日本習俗？</div>
+    <div class="faq-answer">
+      <p>了解並尊重當地習俗將讓您的旅程更加精彩。以下是一些要點：</p>
+      <ul>
+        <li>問候或感謝某人時要鞠躬。對遊客來說，輕輕點頭就好。</li>
+        <li>進入住宅、旅館（傳統旅館）和一些餐廳時請脫鞋。</li>
+        <li>不要給小費——這不是慣例，而且會被視為粗魯。</li>
+        <li>在公共交通工具上保持安靜，尤其是使用手機時。</li>
+        <li>東京搭乘手扶梯時請站在左側（大阪則站在右邊）。</li>
+        <li>避免在公共場所行走時進食。</li>
+        <li>給予或接受物品時請使用雙手，尤其是金錢或名片。</li>
+        <li>如果使用筷子，請勿將其垂直插入米飯中或直接將食物從筷子傳遞到筷子。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</main>
+<!-- <footer>
+  <div class="container">
+      <div class="footer-content">
+          <div class="footer-section">
+              <h3>快速連結</h3>
+              <ul>
+                  <li><a href="/Home.html">主頁</a></li>
+                  <li><a href="/about.html">關於我們</a></li>
+                  <li><a href="/contact.html">聯絡我們</a></li>
+                  <li><a href="/book.html">預訂旅程</a></li>
+              </ul>
+          </div>
+          <div class="footer-section">
+              <h3>政策</h3>
+              <ul>
+                  <li><a href="\Privacy.html">私隱政策</a></li>
+                  <li><a href="\Term.html">條款及細則</a></li>
+              </ul>
+          </div>          
+      </div>
+  </div>
+</footer> -->
+
+<footer>
+  <p>&copy; 2024 Go Travel. All Copyrights reserved.</p>
+</footer>
+
+<script>
+  // Add any necessary JavaScript here
+  document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              document.querySelector(this.getAttribute('href')).scrollIntoView({
+                  behavior: 'smooth'
+              });
+          });
+      });
+  });
+</script>
+</body>
+</html>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const answer = question.nextElementSibling;
+      const isOpen = answer.classList.contains('show');
+      
+      // Close all other answers
+      document.querySelectorAll('.faq-answer').forEach(item => {
+        item.classList.remove('show');
+      });
+      document.querySelectorAll('.faq-question').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Toggle the clicked answer
+      if (!isOpen) {
+        answer.classList.add('show');
+        question.classList.add('active');
+      }
+    });
+  });
+});
+</script>
+
+</body></html>

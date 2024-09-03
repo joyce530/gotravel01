@@ -1,0 +1,261 @@
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>去旅行!</title>
+<link rel="icon" type="image/jpg" href="../Logo/Go Travel-R01.png">
+
+
+<style>
+body {
+  font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
+  line-height: 1.6;
+  color:#333;;
+ 
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+h1, h2 {
+  color: rgb(130, 207, 240);
+}
+.container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+  padding: 20px; 
+  width: 800px;
+  resize: both;
+  overflow: auto;
+  height:400px; 
+}
+.visa-type {
+  /* border: 1px solid #b44aa5; */
+  border: 1px solid rgb(130, 207, 240);
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.visa-type h3 {
+  margin-top: 0;
+  color:#333;;
+}
+.cherry-blossom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes fall {
+  0% { transform: translateY(-10vh) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(720deg); }
+}
+.resize {order: 2px solid;
+  padding: 20px; 
+  width: 300px;
+  resize: both;
+  overflow: auto;
+}
+
+/* option */
+.buttons {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+  }
+  .button {
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 3s;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+  } 
+  
+  .button:hover {
+    /* background-color: #f0f0f0; */
+    background-color: #bad9f1;
+  } 
+
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: solid rgb(31, 91, 188);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color:rgb(31, 91, 188);
+  }
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  button.button{width: 60px;padding :35px;}
+</style></head><body>
+<!-- 
+  <div class="container"> -->
+  <h1>日本簽證須知</h1>
+  <h2>Japan Visa Information</h2>
+
+  <!-- <p style="color: #81c1ef;">歡迎來到日本簽證資訊頁面。這裡提供了申請日本簽證的重要資訊和注意事項。</p> -->
+  <div class="container">
+  <div class="visa-type">
+    <h3>短期停留簽證</h3>
+    <ul>
+      <li>適用於旅遊、商務或探親等短期訪問</li>
+      <li>停留期限通常不超過90天</li>
+      <li>需要提供往返機票和住宿證明</li>
+    </ul>
+  </div>
+
+  <!-- document -->
+  <div class="visa-type">
+    <h3>基本所需文件</h3>
+    <ul>
+      <li>簽證申請表 </li>
+      <li>半年內彩色白底近照1張 （約4.5釐米x 3.5釐米或2吋x 1.5吋）</li>
+      <li>最近連續3個月香港經濟證明（1萬以上）副本（傭工除外）</li>
+      <li>香港 / 澳⾨身份證副本</li>
+      <li>旅⾏日程表正本及通⾏證副本﹝持中國護照﹞</li> 
+    </ul>
+
+
+  </div>
+  <div class="visa-type">
+    <h3>學生簽證</h3>
+    <ul>
+      <li>適用於在日本學習的外國學生</li>
+      <li>需要日本學校的入學許可</li>
+      <li>可能需要提供資金證明</li>
+    </ul>
+  </div>
+
+  <div class="visa-type">
+    <h3>工作簽證</h3>
+    <ul>
+      <li>適用於在日本工作的外國人</li>
+      <li>需要日本公司的工作邀請函</li>
+      <li>根據工作類型有不同的簽證種類</li>
+    </ul>
+  </div>
+
+  <h2>申請流程</h2>
+  <ol>
+    <li>準備所需文件</li>
+    <li>填寫簽證申請表</li>
+    <li>預約面談（如需要）</li>
+    <li>提交申請並支付費用</li>
+    <li>等待處理（通常需要5-10個工作日）</li>
+  </ol>
+
+  <p>注意：簽證要求可能會根據您的國籍和具體情況有所不同。請務必查看<a href="https://www.mofa.go.jp/j_info/visit/visa/">日本外務省官方網站</a>以獲取最新、最準確的信息。</p>
+</div>
+
+<!-- option button  -->
+<!-- <div class="buttons">
+  <button class="button" title="主頁" onclick="location.href='#charles'">🏠</button>
+  <button class="button" title="返回" onclick="history.back()">⬅️</button>
+  <button class="button" title="分享" onclick="showSharePopup()">&#x1F491;</button>
+</div> -->
+
+<div class="buttons">
+  <a class="button"  title="主頁" href="../Home.html">🏠</a>
+  <a class="button"  title="其他行程" href="./Japan pg1.html">⬅️</a>
+  <!-- <button class="button" title="主頁" onclick="location.href='#charles'">🏠</button>
+  <button class="button" title="返回" onclick="history.back()">⬅️</button> -->
+  <button class="button" title="分享" onclick="showSharePopup()">&#x1F491;</button>
+</div>
+<div id="sharePopup" class="popup">
+  <span class="close" onclick="closeSharePopup()">&times;</span>
+  <h2>分享這個頁面</h2>
+  <button onclick="shareToFacebook()">分享到 Facebook</button>
+  <button onclick="shareToWhatsApp()">分享到 WhatsApp</button>
+</div>
+
+
+
+<!-- cherry blossom -->
+<svg class="cherry-blossom" width="100%" height="100%">
+  <defs>
+    <radialGradient id="petal-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <!-- <stop offset="0%" style="stop-color:rgb(255,183,197);stop-opacity:1" /> -->
+      <stop offset="0%" style="stop-color:rgb(130, 207, 240);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+      <!-- <stop offset="100%" style="stop-color:rgb(213, 237, 225);stop-opacity:1" /> -->
+    </radialGradient>
+  </defs>
+</svg>
+
+<script>
+function createPetal() {
+  const petal = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  petal.setAttribute("d", "M0,0 C50,40 50,70 20,100 L0,85 L-20,100 C-50,70 -50,40 0,0");
+  petal.setAttribute("fill", "url(#petal-gradient)");
+  return petal;
+}
+
+function addCherryBlossom() {
+  const svg = document.querySelector('.cherry-blossom');
+  const petal = createPetal();
+  
+  const size = Math.random() * 10 + 5;
+  petal.setAttribute("transform", `scale(${size / 100})`);
+  
+  const xPos = Math.random() * 100;
+  const yPos = -10;
+  petal.style.transform = `translate(${xPos}vw, ${yPos}vh)`;
+  
+  const animationDuration = Math.random() * 5 + 5;
+  petal.style.animation = `fall ${animationDuration}s linear infinite`;
+  
+  svg.appendChild(petal);
+  
+  setTimeout(() => {
+    svg.removeChild(petal);
+  }, animationDuration * 1000);
+}
+
+setInterval(addCherryBlossom, 300);
+</script>
+<!-- option button script -->
+
+<script>
+  function showSharePopup() {
+    document.getElementById('sharePopup').style.display = 'block';
+  }
+
+  function closeSharePopup() {
+    document.getElementById('sharePopup').style.display = 'none';
+  }
+
+  function shareToFacebook() {
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
+  }
+
+  function shareToWhatsApp() {
+    window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent('查看日本簽證資訊：' + window.location.href), '_blank');
+  }
+</script>
+</body></html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>付款頁面</title>
+    <style>
+    body {
+        font-family: 'Noto Sans JP', sans-serif;
+        line-height: 2;
+        color: #333;
+        margin: 0;
+        height: 1000px;  
+        background-color: #f0f0f0;
+    }
+    .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+        align-items: center;
+        padding: 20px;
+    }
+    .container h2{
+        align-items: center;
+    }
+    header {
+       display: flex;
+       justify-content: left; 
+       align-items: center; 
+       background-color: rgb(31, 91, 188);
+       color: rgb(233, 225, 225);
+       padding: 5px 10px; 
+       height: 100px;
+    }
+    #branding {
+      display: flex;
+      align-items: right; 
+      line-height: 20px;
+    }
+    #branding img {
+      margin-right: 20px; 
+    } 
+    nav {
+      margin-left: 0; 
+    }
+    nav ul {
+      display: flex; 
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    nav li {
+      margin: 0 15px; 
+    }
+    .header-item{
+        font-size: 23px;
+        margin: 5px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    header a {
+        color: #cc1c1c;
+        text-decoration: none;
+        text-transform: uppercase;
+        margin-right: 20px;
+        font-size: 25px;
+        padding: 5px 10px;
+    }
+    header ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        overflow: hidden;
+    }
+    header nav ul li a {
+        padding: 5px 10px; 
+        line-height: 30px; 
+        color: #a6df3c;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+    header li {
+        float: center;
+        display: inline;
+        padding: 0 20px 0 20px;
+    }
+    header #branding {
+        float: left;
+        font-size: 20px;
+        margin-right:40px;
+    }
+    header #branding h1 {
+        margin: 0;
+    }
+    header nav {
+        float: left;
+        margin-top: 15px;
+        margin: 10px;
+    }
+    header .highlight, header .current a {
+        color: #c1e00d;
+        font-weight: bold;
+    }
+    header a:hover {
+        color: #ffffff;
+    }  
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2em;
+        }
+        .payment-container {
+            background-color: rgb(253, 253, 253);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            height: 800px;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .payment-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .payment-option:hover {
+            border-color: #3498db;
+            transform: translateY(-3px);
+        }
+        .payment-option img {
+            width: 50px;
+            margin-right: 20px;
+        }
+        .payment-option h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        #payment-form {
+            display: none;
+            margin-top: 30px;
+        }
+        input {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        footer {
+            background-color: #c3ee8a;
+            color: rgb(15, 1, 1);
+            text-align: center;
+            padding: 1em;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <header>      
+        <div id="branding">           
+            <img src="/Logo/Go Travel-R01.png" alt="Logo" style="height:200px;">         
+        </div>
+    <nav>
+        <ul>
+            <li><a href="/home.html"class="highlight">主頁</a></li>
+            <li><a href="/about.html"class="highlight">關於我們</a></li>
+            <li><a href="/Contact.html" class="highlight">聯絡我們</a></li>
+            <li><a href="/book.html" class="highlight">預訂旅程</a></li>
+            <li><a href="/Privacy.html" class="highlight">私隱政策</a></li>
+            <li><a href="/Term.html" class="highlight">條款及細則</a></li>
+        </ul>
+    </nav>
+    </header>
+  
+    <div class="container">
+    <h1>歡迎貴客以下三種方式支付旅行團費用</h1></div>
+
+    <div class="payment-container">
+        <h1>付款辦法</h1>
+        <div class="payment-option" onclick="showForm('paypal')">
+            <img src="/Payment/Icon/Paypal.png" alt="PayPal logo">
+            <h2>PayPal</h2>
+        </div>
+        <div class="payment-option" onclick="showForm('Visa&Master')">
+            <img src="/Payment/Icon/VisaMaster.jpeg" alt="Visa & Master Card logo">
+            <h2>Credit Card</h2>
+        </div>
+        <div class="payment-option" onclick="showForm('cheque')">
+            <img src="/Payment/Icon/Cheque.jpeg" alt="Cheque logo">
+            <h2>Cheque</h2>
+        </div>
+        <form id="payment-form">
+            <div id="paypal-form" style="display:none;">
+                <input type="email" placeholder="PayPal Email" required>
+            </div>
+            <div id="credit-card-form" style="display:none;">
+                <input type="text" placeholder="Card Number" required>
+                <div style="display:flex;justify-content:space-between;">
+                    <input type="text" placeholder="MM/YY" style="width:48%;" required>
+                    <input type="text" placeholder="CVV" style="width:48%;" required>
+                </div>
+                <input type="text" placeholder="Cardholder Name" required>
+            </div>
+            <div id="cheque-form" style="display:none;">
+                <input type="text" placeholder="Cheque Number" required>
+                <input type="text" placeholder="Bank Name" required>
+            </div>
+            <input type="text" placeholder="Amount" required>
+            <!-- <button type="submit">Pay Now</button> -->
+        </form>
+    
+        <button id="pay-now-button" onclick="processPayment()">立即支付</button>
+
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 Go Travel. All rights reserved.</p>
+</footer>
+
+<script>
+    function showForm(paymentType) {
+        const form = document.getElementById('payment-form');
+        form.style.display = 'block';
+        document.getElementById('paypal-form').style.display = paymentType === 'paypal' ? 'block' : 'none';
+        document.getElementById('credit-card-form').style.display = paymentType === 'Visa&Master' ? 'block' : 'none';
+        document.getElementById('cheque-form').style.display = paymentType === 'cheque' ? 'block' : 'none';
+    }
+
+    document.getElementById('payment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        console.log('Payment form submitted');
+
+        // Simulate processing payment
+        alert('Payment processed successfully!');
+
+        // Simulate sending confirmation email
+        sendConfirmationEmail();
+
+        // Display confirmation message on the page
+        displayConfirmationMessage();
+    });
+
+    function sendConfirmationEmail() {
+        // Simulate email sending
+        console.log('Confirmation email sent to your registered email address!');
+    }
+
+    function displayConfirmationMessage() {
+        // Create a confirmation message element
+        const confirmationMessage = document.createElement('div');
+        confirmationMessage.style.textAlign = 'center';
+        confirmationMessage.style.marginTop = '20px';
+        confirmationMessage.style.padding = '15px';
+        confirmationMessage.style.border = '1px solid #3498db';
+        confirmationMessage.style.borderRadius = '10px';
+        confirmationMessage.style.backgroundColor = '#d4edda';
+        confirmationMessage.style.color = '#155724';
+        confirmationMessage.style.fontSize = '18px';
+        confirmationMessage.innerText = 'Thank you! Your payment has been received. A confirmation email has been sent to you.';
+
+        // Clear existing content and append the confirmation message
+        const formContainer = document.querySelector('.payment-container');
+        formContainer.innerHTML = '';
+        formContainer.appendChild(confirmationMessage);
+    }
+    function processPayment() {
+        // 顯示確認消息
+        alert('感謝您的支付！您的付款已成功處理。');
+        
+        // 你可以在這裡進行其他處理，比如提交表單或重置表單
+        document.getElementById('payment-form').reset();
+    }
+
+</script>
+</body>
+</html>

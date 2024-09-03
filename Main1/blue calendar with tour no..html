@@ -1,0 +1,334 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>去旅行!</title>
+<link rel="icon" type="image/jpg" href="../Logo/Go Travel-R01.png">
+<script src="https://cdn.jsdelivr.net/npm/luxon@2.3.1/build/global/luxon.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #e6f3ff;
+    }
+    .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+        color: #0066cc;
+    }
+    .calendar-container {
+        margin-bottom: 20px;
+    }
+    .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .calendar-month {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #0066cc;
+    }
+    .calendar-nav {
+        display: flex;
+        gap: 10px;
+    }
+    .calendar-nav button {
+        background-color: #3399ff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+    .calendar-nav button:hover {
+        background-color: #0080ff;
+    }
+    .calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+    }
+    .calendar-day {
+        border: 1px solid #b3d9ff;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        min-height: 100px;
+    }
+    .calendar-day:hover {
+        background-color: #e6f3ff;
+    }
+    .calendar-day.available {
+        background-color: #cce6ff;
+    }
+    .calendar-day.selected {
+        background-color: #3399ff;
+        color: white;
+    }
+    .calendar-day .symbol {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        font-size: 0.7em;
+    }
+    .calendar-day .price {
+        font-size: 0.8em;
+        color: #006600;
+        margin-top: 5px;
+    }
+    .calendar-day .tour-number {
+        font-size: 0.8em;
+        color: #000066;
+        margin-top: 5px;
+    }
+    .enroll-form {
+        background-color: #f0f8ff;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    input[type="text"], input[type="email"], input[type="tel"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #b3d9ff;
+        border-radius: 4px;
+    }
+    button {
+        background-color: #3399ff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0080ff;
+    }
+    .legend {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+        background-color: #f0f8ff;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .legend-item {
+        display: flex;
+        align-items: center;
+    }
+    .legend-symbol {
+        margin-right: 5px;
+    }
+    .nav-button {
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    position: fixed;
+    top: 50px;
+    
+  }
+</style>
+</head>
+<body>
+    <button class="nav-button" id="backButton" title="Back">⬅️</button>
+    <div class="container">
+        <h1>精彩日本團</h1>
+        <h2>選擇出發日期</h2>
+        
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button id="prevMonth">&lt; 上個月</button>
+                <div class="calendar-month" id="currentMonth"></div>
+                <button id="nextMonth">下個月 &gt;</button>
+            </div>
+            <div id="calendar" class="calendar"></div>
+        </div>
+        <div class="legend">
+            <div class="legend-item"><span class="legend-symbol">🔹</span> 剩餘少量名額</div>
+            <div class="legend-item"><span class="legend-symbol">🔸</span> 快將成團</div>
+            <div class="legend-item"><span class="legend-symbol">✅</span> 已成團</div>
+        </div>
+        <div class="enroll-form">
+            <h2>報名表格</h2>
+            <form id="enrollForm">
+                <input type="text" id="name" placeholder="姓名" required>
+                <input type="email" id="email" placeholder="電郵地址" required>
+                <input type="tel" id="phone" placeholder="電話號碼" required>
+                <input type="text" id="selectedDate" placeholder="選擇的出發日期" readonly>
+                <input type="text" id="selectedTourNumber" placeholder="團號" readonly>
+                <input type="text" id="selectedPrice" placeholder="團費" readonly>
+                <button type="submit">報名參加</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const DateTime = luxon.DateTime;
+        let selectedDate = null;
+        let selectedPrice = null;
+        let selectedTourNumber = null;
+        let currentMonth = DateTime.now();
+
+        function generateCalendar() {
+            const calendarEl = document.getElementById('calendar');
+            calendarEl.innerHTML = '';  // Clear previous calendar
+            
+            const startOfMonth = currentMonth.startOf('month');
+            const endOfMonth = currentMonth.endOf('month');
+
+            // Update the month display
+            document.getElementById('currentMonth').textContent = currentMonth.toFormat('yyyy年MM月');
+
+            // Add day headers
+            const dayNames = ['日', '一', '二', '三', '四', '五', '六'];
+            dayNames.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.classList.add('calendar-day');
+                dayHeader.textContent = day;
+                calendarEl.appendChild(dayHeader);
+            });
+
+            // Add empty cells for days before the start of the month
+            for (let i = 0; i < startOfMonth.weekday % 7; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.classList.add('calendar-day');
+                calendarEl.appendChild(emptyDay);
+            }
+
+            // Add days of the month
+            for (let day = startOfMonth; day <= endOfMonth; day = day.plus({ days: 1 })) {
+                const dayEl = document.createElement('div');
+                dayEl.classList.add('calendar-day');
+                dayEl.textContent = day.day;
+
+                // Simulate available dates and statuses
+                if (day.weekday >= 5) {  // Friday, Saturday, Sunday
+                    dayEl.classList.add('available');
+                    let symbol = '';
+                    let status = Math.floor(Math.random() * 3);  // Randomly assign status for demonstration
+                    switch(status) {
+                        case 0:
+                            symbol = '🔹';  // 剩餘少量名額
+                            break;
+                        case 1:
+                            symbol = '🔸';  // 快將成團
+                            break;
+                        case 2:
+                            symbol = '✅';  // 已成團
+                            break;
+                    }
+                    const symbolEl = document.createElement('span');
+                    symbolEl.classList.add('symbol');
+                    symbolEl.textContent = symbol;
+                    dayEl.appendChild(symbolEl);
+
+                    // Add price
+                    const price = Math.floor(12000 + Math.random() * 3000);  // Random price between 12000 and 15000
+                    const priceEl = document.createElement('div');
+                    priceEl.classList.add('price');
+                    priceEl.textContent = `HK$${price}`;
+                    dayEl.appendChild(priceEl);
+
+                    // Add tour number
+                    const tourNumber = `JCRC00${Math.floor(Math.random() * 6) + 1}`;
+                    const tourNumberEl = document.createElement('div');
+                    tourNumberEl.classList.add('tour-number');
+                    tourNumberEl.textContent = tourNumber;
+                    dayEl.appendChild(tourNumberEl);
+
+                    dayEl.addEventListener('click', () => selectDate(day, dayEl, price, tourNumber));
+                }
+
+                calendarEl.appendChild(dayEl);
+            }
+        }
+
+        function selectDate(date, element, price, tourNumber) {
+            if (selectedDate) {
+                document.querySelectorAll('.calendar-day').forEach(el => el.classList.remove('selected'));
+            }
+            selectedDate = date;
+            selectedPrice = price;
+            selectedTourNumber = tourNumber;
+            element.classList.add('selected');
+            document.getElementById('selectedDate').value = date.toFormat('yyyy-MM-dd');
+            document.getElementById('selectedPrice').value = `HK$${price}`;
+            document.getElementById('selectedTourNumber').value = tourNumber;
+        }
+
+        document.getElementById('enrollForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (!selectedDate) {
+                alert('請選擇出發日期');
+                return;
+            }
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                departureDate: selectedDate.toFormat('yyyy-MM-dd'),
+                tourNumber: selectedTourNumber,
+                price: selectedPrice
+            };
+
+              //** Here you would typically send this data to your server  
+           console.log('確認同意:', formData);  
+
+            // **Redirect to the shopping cart page  
+            window.location.href = './shorpcart2.html'; // Change this to your actual cart page URL  
+
+            // // Here you would typically send this data to your server
+            // console.log('報名資料:', formData);
+            // alert('報名成功！我們會盡快與您聯絡。');
+
+            //** Here you would typically send this data to your server
+              console.log('確認同意:', formData);
+            alert('報名完成！請選定旅行目的地。');
+        });
+
+        document.getElementById('prevMonth').addEventListener('click', () => {
+            currentMonth = currentMonth.minus({ months: 1 });
+            generateCalendar();
+        });
+
+        document.getElementById('nextMonth').addEventListener('click', () => {
+            currentMonth = currentMonth.plus({ months: 1 });
+            generateCalendar();
+        });
+
+        generateCalendar();
+    </script>
+
+    <!-- // Back button functionality -->
+<!-- <button class="nav-button" id="backButton" title="Back">⬅️</button> -->
+
+<script> backButton = document.getElementById('backButton');
+backButton.addEventListener('click', () => {
+  window.history.back();
+});
+</script>
+
+</body>
+</html>

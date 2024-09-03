@@ -1,0 +1,248 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>去旅行!</title>
+<link rel="icon" type="image/jpg" href="../Logo/Go Travel-R01.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: "Zen Maru Gothic", serif;;
+    line-height: 1.6;
+    color: #333;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: url('./img1/cherry\ b4.png') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+  }
+  .content-wrapper {
+    background-color: rgba(250, 250, 250, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 20px 5px rgba(0, 0, 0, 0.1);
+    top:5%;
+    position: relative;
+    border: solid pink
+    
+  }
+  h1 {
+    text-align: center;
+    color: #81c1ef;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0px;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  th {
+    background-color:  rgb(31, 91, 188);
+    ;
+    
+    color: white;
+  }
+  tr:nth-child(even) {
+    background-color: rgba(242, 242, 242, 0.9);
+  }
+  tr:hover {
+    background-color: rgba(221, 221, 221, 0.9);
+  }
+  .note {
+    margin-top: 20px;
+    font-style: italic;
+    color: #666;
+  }
+  .buttons {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+  }
+  .button {
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    /* transition: background-color 0.3s; */
+    transition: background-color 3s;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+  } 
+   .button:hover {
+    /* background-color: #f0f0f0; */
+    background-color: #bad9f1;
+  } 
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: solid rgb(31, 91, 188);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color:rgb(31, 91, 188);
+  }
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  .google-btn {
+        background-color: #fff;
+        color: #757575;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+    }
+    .google-btn:hover {
+        background-color: #ebdfdf;
+    }
+    .facebook-btn {
+      background-color: #fff;
+        color: #757575;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+    }
+    .facebook-btn:hover {
+        background-color: #dbe2f0;
+    }
+
+   button.button{width: 60px;padding :35px;}
+    
+
+</style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <h1>日本簽證資訊</h1>
+    
+    <table>
+      <tr>
+        <th>護照種類</th>
+        <th>香港特區護照／ 澳門特區護照</th>
+        <th>香港D.I.</th>
+        <th>中國護照</th>
+        <th>澳門特區旅行證</th>
+        <th>菲律賓護照</th>
+        <th>印尼護照</th>
+      </tr>
+      <tr>
+        <td>需否辦簽證</td>
+        <td>-</td>
+        <td>-</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✓</td>
+      </tr>
+      <tr>
+        <td>簽證及手續費 (跟團收費)</td>
+        <td>-</td>
+        <td>-</td>
+        <td>HK$1000</td>
+        <td>HK$1000</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>簽證及手續費 (代辦收費)</td>
+        <td>-</td>
+        <td>HK$1000</td>
+        <td>HK$900</td>
+        <td>HK$1000</td>
+        <td>HK$1380</td>
+        <td>HK$1380</td>
+      </tr>
+      <tr>
+        <td>所需工作天</td>
+        <td>-</td>
+        <td>12</td>
+        <td>HK$1380</td>
+        <td>HK$1180</td>
+        <td>HK$1380</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>證件所需有效期</td>
+        <td>1 個月</td>
+        <td>6 個月</td>
+        <td>12</td>
+        <td>12</td>
+        <td>12</td>
+        <td>6 個月</td>
+      </tr>
+      <tr>
+        <td>可停留期限</td>
+        <td>90 日</td>
+        <td>-</td>
+        <td>6 個月</td>
+        <td>6 個月</td>
+        <td>6 個月</td>
+        <td>-</td>
+      </tr>
+    </table>
+
+    <p class="note">注意：此表格資訊可能會有變動，請以官方最新公告為準。部分欄位資訊可能有誤或缺失，建議向相關機構確認最新資訊。</p>
+  </div>
+
+   <div class="buttons">
+    <a class="button"  title="主頁" href="../Home.html">🏠</a>
+    <a class="button"  title="其他行程" href="./Japan pg1.html">⬅️</a>
+    <!-- <button class="button" title="主頁" onclick="location.href='#charles'">🏠</button>
+    <button class="button" title="返回" onclick="history.back()">⬅️</button> -->
+    <button class="button" title="分享" onclick="showSharePopup()">💑</button>
+  </div>
+
+  <div id="sharePopup" class="popup">
+    <span class="close" onclick="closeSharePopup()">&times;</span>
+    <h2>分享這個頁面</h2>
+    <!-- <button onclick="shareToFacebook()">分享到 Facebook</button>
+    <button onclick="shareToWhatsApp()">分享到 WhatsApp</button> -->
+
+    <button class="google-btn" onclick="shareToFacebook()">分享到 Facebook</button>
+    <button class="facebook-btn " onclick="shareToWhatsApp()">分享到 WhatsApp</button>
+  </div>
+  
+  
+  <script>
+    function showSharePopup() {
+      document.getElementById('sharePopup').style.display = 'block';
+    }
+
+    function closeSharePopup() {
+      document.getElementById('sharePopup').style.display = 'none';
+    }
+
+    function shareToFacebook() {
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
+    }
+
+    function shareToWhatsApp() {
+      window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent('查看日本簽證資訊：' + window.location.href), '_blank');
+    }
+  </script>
+</body>
+</html>

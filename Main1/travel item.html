@@ -1,0 +1,284 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>去旅行!</title>
+<link rel="icon" type="image/jpg" href="../Logo/Go Travel-R01.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+<style>
+  body {
+    font-family: "Zen Maru Gothic", serif;;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    /* margin-left: 50px; */
+    padding: 20px;
+    /* background: url('https://images.unsplash.com/photo-1522383225653-ed111181a951?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center fixed; */
+    background-size: cover;
+    position: relative;
+    
+  }
+  .content-wrapper {
+    background-color: rgba(250, 250, 250, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 20px 5px rgba(0, 0, 0, 0.1);
+    top:20%;
+    position: relative;
+    border: solid pink
+    
+  }
+  h1 {
+    text-align: center;
+    color: #81c1ef;
+  }
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  th {
+    background-color:  rgb(31, 91, 188);
+    ;
+    
+    color: white;
+  }
+  tr:nth-child(even) {
+    background-color: rgba(242, 242, 242, 0.9);
+  }
+  tr:hover {
+    background-color: rgba(221, 221, 221, 0.9);
+  }
+  .note {
+    margin-top: 20px;
+    font-style: italic;
+    color: #666;
+  }
+  .buttons {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+  }
+  .button {
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    /* transition: background-color 0.3s; */
+    transition: background-color 3s;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+  }  
+
+  .button:hover {
+    /* background-color: #f0f0f0; */
+    background-color: #bad9f1;
+  } 
+   /* button.button{width: 60px;padding :35px;} */
+    
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: solid rgb(31, 91, 188);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color:rgb(31, 91, 188);
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  .container{border:none;
+              background-color: rgb(255, 253, 253);
+              height: auto;
+              border-radius: 20px;
+              box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+              width: 900px;}
+
+
+
+
+  
+</style>
+</head>
+<body>
+<!-- New format -->
+
+<div class="container">
+  <h2>日本旅遊須知</h2>
+  
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#home">寄艙行李</a></li>
+    <li><a data-toggle="pill" href="#menu1">安全指引</a></li>
+    <li><a data-toggle="pill" href="#menu2">手提行李</a></li>
+    <li><a data-toggle="pill" href="#menu3">入境/出境</a></li>
+  </ul>
+  <hr>
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>寄艙行李</h3>
+      <table>
+        <tr>
+          <th>國泰(CX) /  </th>
+          <th>每人最多只限帶1件，總重量不超過23kg (50磅)</th>
+          <th>行李尺寸不可超過158厘米/ 62 吋(長+闊+高) /th>
+         
+        </tr>
+        <tr>
+          <td>中華航空 (CI)  </td>
+          <td>每人限帶不超過，一件限23kg </td>
+          <td>行李尺寸不可超過158厘米/ 62 吋(長+闊+高) </td>
+      
+        </tr>
+        <tr>
+          <td>香港航空 (HX)    </td>
+          <td>每人限帶2件合共 (20kg) </td>
+          <td>行李尺寸不可超過158厘米/ 62 吋(長+闊+高)</td>
+         
+        </tr>
+        <tr>
+          <td>香港快運 (UO)  </td>
+          <td>每人限帶不超過20kg</td>
+          <td>行李尺寸不可超過158厘米/ 62 吋(長+闊+高) </td>
+         
+        </tr>
+        <tr>
+          <td>日本航空 (JAL)</td>
+          <td>每人最多只限帶2件，每件不超過23kg (50磅) </td>
+          <td>行李尺寸不可超過203厘米 (長+闊+高)</td>
+          
+        </tr>
+        <tr>
+          <td>ANA (NH) </td>
+          <td>即日至8 月 31 日出發日出發日出發日出發  <br>
+              每人最多只限帶2件，每件不超過23kg (50磅) </td>
+          <td>行李尺寸不可超過158厘米/ 62 吋(長+闊+高) </td>
+          
+        </tr>
+        <tr>
+          <td>大灣區航空 (HB) </td>
+          <td>每人最多只限帶1件，總重量不超過20kg</td>
+          <td>行李總長度不可超過 158 厘米 / 62 吋(長+闊+高) </td>
+        
+        </tr>
+      </table>
+  
+      <p class="note">注意：不論是組別合併或個人計算行李重量。如有發現超出上述限制之行李，嘉賓必須即時重整有關行李，方可安排行李寄艙。若嘉賓未能符合航空公司之規定，航空公司將收取額外運費。</p>
+    <ul>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>安全指引 </h3>
+      <p>嘉賓在參加團隊任何活動或自費活動時，請先因應自己的年齡、能力、身體狀況、活動內容等細節評估自己是否適合參加， 而參加團隊任何活動時，必須遵從工作人員的安全指示及活動守則。 嘉賓需自行承擔一切引起之責任、損失、費用及後果。如有任何爭議，東灜遊旅行社有限公司將保留最終決定權。</p>
+    <h3>颱風措施</h3>
+    <p>出發當日，天文台懸掛八號或以上颱風訊號，嘉賓如沒有收到領隊個別通知取消或延期出發者，則一律依照原定時間抵達機場集合。 </p>
+    
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>手提行李</h3>
+      <ol>
+        <li>只限攜帶一件，尺寸不可超過56 x 36 x 23cm  (22 x 14 x 9吋) ，(此尺寸已包括行李之滑輪及手柄)及重量不可7kg為準 (各航空公司尺寸有所不同, 詳情請參考各航空公司官方網頁為準)</li>
+        <li> 手提行李內凡攜帶化妝品、液體、啫喱狀、乳狀及噴霧式液體，必須放在100毫升以下的容器內(以每件計，所有液體容器必須放在一個只可盛載最多1 公升物質之可密封的<透明袋>內) </li>
+        <li>如嘉賓需要攜帶醫療用品或嬰兒食品等，只可攜帶附有證明文件的藥物，並足夠於航程上所須份量，而安檢人員可能要求查證其成份或要求嘉賓即時試食(如嬰兒食品)。 </li>
+        <li>旅客如需攜帶個人自用電子用品內含鋰或鋰離子電池芯或其他可攜式電子裝置用品(如手錶、計算器、照相機、手機、手提電腦、可攜式攝像機等) 應作為手提行李攜帶登機 ，旅客攜帶鋰金屬電池的鋰含量不得超過 2 克，鋰離子電池的額定能量值不得超過100Wh(瓦特小時) ，並且攜帶含有鋰電池之電子產品時，必須確認已經關機。而有關備用鋰電池 ，包括外置充電器等，必須單個做好絕緣保護以防短路，並必須以手提行李攜帶，不可寄艙。(如在暴露的電極上貼膠帶，或將每個電池放入單獨的塑膠袋或保護盒當中 ，妥善做好保護措施和放置存放在手提行李中，防止鋰電池因碰撞衝擊引發事故)。</li>
+      <li>每位旅客只可隨身攜帶一個打火機，並需要存放於手提行李。   </li>
+      </ol>
+      <p>以上所有規定將按各國機場和航空公司最後公佈為準。 詳細資料可瀏覽參考香港民航處 http://www.cad.gov.hk/chinese/pdf/Leaflet_lithium%20battery_May2011.pdf 或香港機場管理局http://www.hongkongairport.com/chi/passenger/departure/all/airport-security.html 網頁。 </p>
+    </div>
+
+
+    <div id="menu3" class="tab-pane fade">
+      <h3>入境/出境</h3>
+      <ol>
+        <li>航空公司規定凡持外國護照者(沒有香港身份証)，必須帶同返回當地的機票出發。否則，航空公司可能拒絕登機返港。 </li>
+        <li> 凡所持之旅遊證件無需辦理入境簽證，證件有效期必需有一個月或以上。如需辦理入境簽證，則需備有6個月或以上有效期 (以去程日起計算)。如有需要，請記得帶備有效簽證，否則，航空公司有權拒絕登機或被當地移民局拒絕入境。 </li>
+        <li>所有護照必須完整,不可有任何缺頁,損壞或塗鴉 (包括但不限於非官方的蓋章)，否則航空公司有權拒絕登機，或被當地移民局拒絕入境，本公司概不負責。</li>
+        <li>辦理簽證提示： 凡委託本公司辦理簽證之嘉賓，不論在任何港口或口岸辦理登機手續直接進入香港國際機場禁區內，必須於出發日不少於5個工作天前通知本社職員領回該有效簽證，否則航空公司有權拒絕辦理登手續(澳門分行須再加1個工作天時間)。而部份國家簽證無須提交旅遊證件正本辦理，但其有效簽證或電子簽證e-Visa亦必須要帶備出機場。 </li>
+        <li>凡進入日本之旅客必須按日本政府之要求在入境前提供姓名、性別、出生日期、有效證件號碼、國藉代號等資料。   </li>
+      </ol>
+       <h3>攜帶物品過境注意事項物品過境注意事項物品過境注意事項</h3>
+      
+      <ul>
+      <li>日本: 凡年滿二十歲之旅客可攜帶一條煙及三支酒。 </li>
+      <li> 酒類限制: 由2019年起，日本沒有限制旅客攜帶酒精濃度低於24%的飲品。但若酒精濃度介乎24%至70%之間，旅客則不可攜帶超過總容量5公升，酒精濃度超過70%則不得出境。</li>
+      <li> 直髮夾及捲髮夾限制: 無論寄艙或手提行李，所有以鋰電池發電的直髮夾及捲髮器亦不能登機。若捲髮器內的鋰電池可取出，捲髮器可隨身或寄艙，但取出的鋰電池不得超過160Wh並須放置於隨身行李內。乾電池或插座式的直髮夾及捲髮器則不受限制。 </li>
+      <li>電子產品限制:手提電腦、外置充電器等電池鋰含量為2g至8g的電子產品不得寄艙。鋰含量為2g以下的電子產品雖可寄艙，但必須完全關機，並妥善保護，如用柔軟的衣物將電子產品包好或放入堅硬的公事包等作緩衝。  </li>
+      <li>食品類限制:未附有檢查證明書的肉類產品一律禁止出入日本境內，不得攜帶。海鮮需完全煮熟才可出境日本。新鮮海鮮如魚生則不得攜帶。   </li>
+      <li>攜帶物品入境注意事項: 外遊時，切勿攜帶貴重物品及奢侈品入境(例如：金條、金製品、名貴飾物及手錶等...)，海關有權對該物品徵收關稅、物品扣關、充公及拒絕旅客入境， 由於各地入境條例有所不同，如旅客攜帶有關物品，請自行了解當地入境及海關條例，本公司一概不會負上責任。 </li>
+      
+
+  </ul>
+    </div>
+  </div>
+</div>
+
+  <!-- option button -->
+  
+  </div>
+
+  <div class="buttons">
+    <a class="button"  title="主頁" href="../Home.html">🏠</a>
+    <a class="button"  title="其他行程" href="./Japan pg1.html">⬅️</a>
+    <!-- <button class="button" title="主頁" onclick="location.href='#charles'">🏠</button>
+    <button class="button" title="返回" onclick="history.back()">⬅️</button> -->
+    <button class="button" title="分享" onclick="showSharePopup()">&#x1F491;</button>
+  </div>
+
+  <div id="sharePopup" class="popup">
+    <span class="close" onclick="closeSharePopup()">&times;</span>
+    <h2>分享這個頁面</h2>
+    <button onclick="shareToFacebook()">分享到 Facebook</button>
+    <button onclick="shareToWhatsApp()">分享到 WhatsApp</button>
+  </div>
+
+  <script>
+    function showSharePopup() {
+      document.getElementById('sharePopup').style.display = 'block';
+    }
+
+    function closeSharePopup() {
+      document.getElementById('sharePopup').style.display = 'none';
+    }
+
+    function shareToFacebook() {
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
+    }
+
+    function shareToWhatsApp() {
+      window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent('查看日本簽證資訊：' + window.location.href), '_blank');
+    }
+  </script>
+</body>
+</html>

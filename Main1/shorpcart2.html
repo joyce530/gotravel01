@@ -1,0 +1,210 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EGL Tours - Shopping Cart</title>
+<link rel="icon" type="image/jpg" href="../Logo/Go Travel-R01.png">
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #e6f3ff;
+    }
+    .container {
+        width: 80%;
+        max-width: 1000px;
+        margin: auto;
+        overflow: hidden;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+        color: #0066cc;
+    }
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e6f3ff;
+        padding: 15px 0;
+    }
+    .item-details {
+        flex-grow: 1;
+    }
+    .item-title {
+        font-weight: bold;
+    }
+    .item-price {
+        color: #0066cc;
+    }
+    .quantity-control {
+        display: flex;
+        align-items: center;
+    }
+    .quantity-btn {
+        background-color: #3399ff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .quantity-btn:hover {
+        background-color: #0080ff;
+    }
+    .quantity {
+        margin: 0 10px;
+        min-width: 20px;
+        text-align: center;
+    }
+    .remove-btn {
+        background-color: #999999;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+    .remove-btn:hover {
+        background-color: #777777;
+    }
+    .cart-summary {
+        margin-top: 20px;
+        text-align: right;
+    }
+    .total {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+    .checkout-btn {
+        background-color: #33cc33;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.1em;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    .checkout-btn:hover {
+        background-color: #29a329;
+    }
+    .empty-cart {
+        text-align: center;
+        color: #666;
+        margin-top: 50px;
+    }
+    .quantity-label {
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+
+    .nav-button {
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    position: fixed;
+    top: 50px;
+    
+  }
+</style>
+</head>
+<body>
+    <button class="nav-button" id="backButton" title="Back">⬅️</button>
+    <div class="container" id="app">
+        <h1>購物車</h1>
+        <div v-if="cart.length > 0">
+            <div class="cart-item" v-for="(item, index) in cart" :key="index">
+                <div class="item-details">
+                    <div class="item-title">{{ item.title }}</div>
+                    <div class="item-price">HK$ {{ item.price.toFixed(2) }}</div>
+                </div>
+                <div class="quantity-control">
+                    <span class="quantity-label">選擇人數：</span>
+                    <button class="quantity-btn" @click="decreaseQuantity(index)">-</button>
+                    <span class="quantity">{{ item.quantity }}</span>
+                    <button class="quantity-btn" @click="increaseQuantity(index)">+</button>
+                </div>
+                <button class="remove-btn" @click="removeItem(index)" v-if="item.quantity > 0">移除</button>
+            </div>
+            <div class="cart-summary">
+                <div class="total">總計: HK$ {{ totalPrice.toFixed(2) }}</div>
+                <button class="checkout-btn" @click="checkout">結帳</button>
+            </div>
+        </div>
+        <div v-else class="empty-cart">
+            <h2>您的購物車是空的</h2>
+            <p>繼續瀏覽我們的產品並添加一些商品到您的購物車！</p>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                cart: [
+                    { title: '東京5天團', price: 7999, quantity: 0 },
+                    { title: '立山黑部5天團', price: 9999, quantity: 0 },
+                    { title: '名古屋5天團', price: 8499, quantity: 0 },
+                    { title: '大阪5天團', price: 7499, quantity: 0 },
+                    { title: '北海道5天團', price: 8999, quantity: 0 },
+                    { title: '沖繩5天團', price: 7899, quantity: 0 }
+                ]
+            },
+            computed: {
+                totalPrice() {
+                    return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                },
+                hasItems() {
+                    return this.cart.some(item => item.quantity > 0);
+                }
+            },
+            methods: {
+                increaseQuantity(index) {
+                    this.cart[index].quantity++;
+                },
+                decreaseQuantity(index) {
+                    if (this.cart[index].quantity > 0) {
+                        this.cart[index].quantity--;
+                    }
+                },
+                removeItem(index) {
+                    this.cart[index].quantity = 0;
+                },
+                checkout() {
+                    if (this.hasItems) {
+                        alert('謝謝您的購買！總金額：HK$ ' + this.totalPrice.toFixed(2));
+                        // Here you would typically redirect to a checkout page or process the payment
+                    // Redirect to payment.html  
+                      window.location.href = './Payment.html'; 
+                    } else {
+                        alert('您的購物車是空的，請添加商品後再結帳。');
+                    }
+                }
+            }
+        });
+    </script>
+
+       <!-- // Back button functionality -->
+<!-- <button class="nav-button" id="backButton" title="Back">⬅️</button> -->
+
+<script> backButton = document.getElementById('backButton');
+    backButton.addEventListener('click', () => {
+      window.history.back();
+    });
+    </script>
+
+</body>
+</html>

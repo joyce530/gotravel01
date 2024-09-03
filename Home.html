@@ -1,0 +1,358 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>去旅行！</title>
+<link rel="icon" type="image/jpg" href="../Logo/Go Travel-R01.png">
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .container {
+        max-width: 2000px;
+        margin: 0 auto;
+        padding: 0 20px;
+        height:fit-content;
+    }
+    header {
+        background-color: #83ecd6;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 2;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px;
+        height: 12vh; 
+    }
+    .header-item{
+        font-size: 23px;
+        margin: 10px;
+        display: flex;
+        justify-content: flex-start;
+       /* align-items: center; */ 
+    }
+    .header-item a {
+        margin-right: 40px;  
+        display:inline-flexbox;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: #333;
+        background-color:83ecd6 ; 
+        transition: background-color 0.3s, color 0.3s;     
+    }
+    .header-item a:hover {
+        color: #fff;
+        background-color:#80deea;         
+    }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+    }
+    .logo img {
+        width: 250px;
+        align-items:left;
+        margin-right: 20px;
+    }
+    .nav-links {
+        display: flex;
+        gap: 20px;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 1000;
+        transition: color 0.3s ease;
+        font-size: 1.5rem;
+        padding: 10px 15px;
+    }
+    .nav-links a:hover {
+        color: #cf856a;
+    }
+    .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .hero video {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 1;
+    }
+    .hero-content {
+        text-align: center;
+        color: #edf1ef;
+        z-index: 1;
+    }
+    .hero-content h1 {
+        font-size: 60px;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        color:#a5e0c3
+    }
+    .hero-content h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        color:#a5e0c3
+    }
+    .cta-button {
+        display: inline-block;
+        background-color: #00c3ff;
+        color: #fff;
+        padding: 18px 40px;
+        border-radius: 20px;
+        font-size: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+        background-color: #ff6347;
+    }
+    .section {
+        padding: 80px 0;
+    }
+    .section h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        color: #333;
+    }
+    .city-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    .city-card {
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        margin: 10px;
+        width: 600px;
+        height: 500px;
+    }
+    .city-card:hover {
+        transform: translateY(-5px);
+    }
+    .city-card img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    .city-card-content {
+        padding: 20px;
+    }
+    .city-card h3 {
+        margin-top: 0;
+        font-size: 1.5rem;
+        color: #333;
+    }
+    .city-card p {
+        color: #666;
+        margin-bottom: 15px;
+    }
+    .city-card a {
+        display: inline-block;
+        background-color: #77bdec;
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+    .city-card a:hover {
+        background-color: #ff6347;
+    }
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 40px 0;
+    }
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .footer-section {
+        flex: 1;
+        margin-right: 30px;
+        margin-bottom: 10px;
+    }
+    .footer-section-1 {
+        text-align: center;
+      /*   font-size: 1rem;
+        padding: 5px; */
+    }
+    .footer-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+    .footer-section ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .footer-section ul li {
+        margin-bottom: 10px;
+    }
+    .footer-section ul li a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .footer-section ul li a:hover {
+        color: #fff;
+    }
+    .social-icons {
+        display: flex;
+        gap: 10px;
+    }
+    .social-icons a {
+        color: #fff;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+        color: #ff4500;
+    }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="header-item logo">
+                    <img src="./Logo/Go Travel-R01.png" alt="Japan Travel HK Logo">
+                </div>
+                <div class="header-item">
+                    <li><a href="./About.html"class="highlight">關於我們</a></li>
+                    <li><a href="./Contact.html" class="highlight">聯絡我們</a></li>
+                    <li><a href="./Main1/blue calendar with tour no..html" class="highlight">預訂旅程</a></li>
+                    <li><a href="./Privacy.html" class="highlight">私隱政策</a></li>
+                    <li><a href="./Term.html" class="highlight">條款及細則</a></li>
+                    <li><a href="./Tips.html" class="highlight">旅遊錦囊</a></li>
+                    <li><a href="./Main1/login.html" class="highlight">登入/註册</a></li>
+                </div>
+            </nav>
+        </div>
+    </header>
+  
+    <main>
+        <section class="hero">
+            <video autoplay loop muted>
+                <source src="./Video/Japan travel-R01.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-content">
+                <h1>探索日本之旅</h1><br>
+                <h2>體驗豐富的文化、品味地道美食，探索壯觀景點，體驗獨特文化</h2>
+                <h2>從古老的神社到現代的城市風光，能讓你每一刻都難以忘懷！</h2><br>
+              
+                <a href="./Main1/Japan pg1.html" class="cta-button">開始計劃您的日本之旅</a>
+            </div>
+        </section>
+    
+        <section class="section">
+            <div class="container">
+                <h2>熱門目的地 </h2>
+                <div class="city-grid">
+                    <div class="city-card">
+                        <img src="./Image/J01.jpg" alt="Tokyo skyline at night with Mount Fuji in the background" width="400" height="300">
+                        <div class="city-card-content">
+                            <h3>東京</h3>
+                            <p>在日本熙熙攘攘的首都體驗傳統與現代的完美融合。</p>
+                            <a href="./Sub/Tokyo.html">Explore Tokyo</a>
+                        </div>
+                    </div>
+                    <div class="city-card">
+                        <img src="./Image/J03.jpg" alt="Vibrant street scene in Osaka with neon signs and street food stalls" width="400" height="300">
+                        <div class="city-card-content">
+                            <h3>大阪</h3>
+                            <p>讓自己沉浸在日本古都豐富的歷史和文化遺產中。</p>
+                            <a href="./Sub/Osaka.html">Visit Osaka</a>
+                        </div>
+                    </div>
+                    <div class="city-card">
+                        <img src="./Image/J07.jpeg" alt="Scenic view of snow-capped mountains and a hot spring in Hokkaido" width="300" height="200">
+                        <div class="city-card-content">
+                            <h3>北海道</h3>
+                            <p>探索日本最北端島嶼的自然美景，從溫泉到滑雪勝地。</p>
+                            <a href="./sub/hokkaido.html">Explore Hokkaido</a>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>快速連結</h3>
+                    <ul>
+                        <li><a href="./Home.html">主頁</a></li>
+                        <li><a href="./About.html">關於我們</a></li>
+                        <li><a href="./Contact.html">聯絡我們</a></li>
+                        <li><a href="./book.html">預訂旅程</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>政策</h3>
+                    <ul>
+                        <li><a href="./Privacy.html">私隱政策</a></li>
+                        <li><a href="./Term.html">條款及細則</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons"> 
+                    <ul>
+                        <li><a href="https://www.facebook.com/traveljapan">Facebook</a></li>
+                        <li><a href="https://www.twitter.com/travelJapan">Twitter</a></li>
+                    </ul>
+                   </div>
+               </div>
+        </div>
+    
+        <div class="footer-section-1">
+        <p>&copy; 2024 Go Travel. All Copyrights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Add any necessary JavaScript here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+    </body>
+    </html>
+    

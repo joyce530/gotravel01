@@ -1,0 +1,206 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>去旅行!</title>
+<link rel="icon" type="image/jpg" href="../Logo/Go Travel-R01.png">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #e6f3ff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .login-container {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+    h1 {
+        color: #0066cc;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    form, .social-login {
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+    input {
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: 1px solid #b3d9ff;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+    button {
+        background-color: #3399ff;
+        color: white;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: 1rem;
+    }
+    button:hover {
+        background-color: #0080ff;
+    }
+    .forgot-password {
+        text-align: right;
+        margin-top: 1rem;
+    }
+    .forgot-password a {
+        color: #0066cc;
+        text-decoration: none;
+    }
+    .forgot-password a:hover {
+        text-decoration: underline;
+    }
+    .register-link {
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+    .register-link a {
+        color: #0066cc;
+        text-decoration: none;
+    }
+    .register-link a:hover {
+        text-decoration: underline;
+    }
+    .error-message {
+        color: #ff0000;
+        text-align: center;
+        margin-bottom: 1rem;
+        display: none;
+    }
+    .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 1rem 0;
+    }
+    .divider::before,
+    .divider::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid #b3d9ff;
+    }
+    .divider span {
+        padding: 0 10px;
+        color: #666;
+        font-size: 0.9rem;
+    }
+    .social-login button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        font-weight: bold;
+    }
+    .social-login button img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+    }
+    .google-btn {
+        background-color: #fff;
+        color: #757575;
+        border: 1px solid #ddd;
+    }
+    .google-btn:hover {
+        background-color: #f1f1f1;
+    }
+    .facebook-btn {
+        background-color: #3b5998;
+    }
+    .facebook-btn:hover {
+        background-color: #2d4373;
+    }
+</style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>歡迎登入 Go Travel.</h1>
+        <div id="error-message" class="error-message"></div>
+        <form id="login-form">
+            <label for="username">用戶名稱或電郵地址</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">密碼</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">登入</button>
+        </form>
+        <div class="forgot-password">
+            <a href="./forget password 2.html">忘記密碼？</a>
+        </div>
+        
+        <div class="divider">
+            <span>或</span>
+        </div>
+        
+        <div class="social-login">
+            <!-- <button class="google-btn" onclick="loginWithGoogle()">
+                <img src="./img1/google logo.png" alt="google logo">
+                使用 Google 帳戶登入
+            </button> -->
+
+            <a class="google-btn" href="https://www.google.com/">
+                <img src="./img1/google logo.png" alt="google logo" width="80px">
+                使用 Google 帳戶登入
+            </a>
+
+
+            <button class="facebook-btn" href="https://www.facebook.com/" target="_blank">
+                <img src="./img1/FB logo.png" alt="Facebook logo"width="80px">
+                使用 Facebook 帳戶登入
+            </button>
+        </div>
+        
+        <div class="register-link">
+            還沒有帳戶？<a href="#">立即註冊</a>
+        </div>
+    </div>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+           
+            if (username === 'demo' && password === 'password123') {
+                // Successful login
+                errorMessage.style.display = 'none';
+                alert('登入成功！歡迎回來，' + username);
+                // Redirect to dashboard or home page
+                location.href = "./Japan pg1.html";
+             
+            } else {
+                // Failed login
+                errorMessage.textContent = '用戶名稱或密碼錯誤，請重試。';
+                errorMessage.style.display = 'block';
+            }
+        });
+
+    
+    //     }
+    // </script>
+
+   
+</body>
+</html>
